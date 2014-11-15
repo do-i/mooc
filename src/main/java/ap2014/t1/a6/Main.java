@@ -2,8 +2,7 @@ package ap2014.t1.a6;
 
 import java.util.Scanner;
 
-/**:x
- * 
+/**
  * Assignment 6 - Merge Arrays
  * <p/>
  * In this lab, you will be creating a program that merges two arrays of positive integers. Your program will accept each array as input from the keyboard. You do not know ahead of time how many values will be entered, but you can assume each array will have a maximum length of 10,000 elements. To stop entering values enter a negative number. You may disregard any negative numbers input and not store these in the array.
