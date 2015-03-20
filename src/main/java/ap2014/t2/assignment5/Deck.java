@@ -1,27 +1,26 @@
 package ap2014.t2.assignment5;
 
-
 import java.util.ArrayList;
 
 public class Deck {
   private ArrayList<Card> deck;
 
-
   public Deck() {
     deck = new ArrayList<Card>();
     deck = initDeck();
-    deck = shuffleDeck();
+    int times = randomInt(20);
+    System.out.println(times);
+    for (int i = 0; i < times; i++) {
+      deck = shuffleDeck();
+    }
     System.out.println(deck);
-
   }
 
   public String toString() {
     String temp = "";
-
     for (Card c : deck) {
       temp += c.toString() + "\n";
     }
-
     return temp;
   }
 
@@ -33,9 +32,7 @@ public class Deck {
 
   public static ArrayList<Card> initDeck() {
     ArrayList<String> ranks = new ArrayList<String>();
-
     ranks.add("ace");
-
     ranks.add("two");
     ranks.add("three");
     ranks.add("four");
@@ -54,7 +51,6 @@ public class Deck {
     suites.add("diamonds");
     suites.add("hearts");
     suites.add("spades");
-
     ArrayList<Card> deck = new ArrayList<Card>();
     for (String s : suites) {
       int p = 1;
@@ -71,12 +67,21 @@ public class Deck {
 
 
   public ArrayList<Card> shuffleDeck() {
-
     ArrayList<Card> t = new ArrayList<Card>();
-//    deck
-    //your code here
-    return deck;
+    final int half = deck.size() / 2;
+    for (int i = 0; i < half; i++) {
+      t.add(deck.get(i));
+      t.add(deck.get(i + half));
+    }
+    // handle odd number of cards
+    if (deck.size() % 1 == 1) {
+      t.add(deck.get(deck.size() - 1));
+    }
+    return t;
   }
 
+  private static int randomInt(int cap) {
+    return Math.abs((int) (Math.random() * Integer.MAX_VALUE) % cap);
+  }
 }
 
